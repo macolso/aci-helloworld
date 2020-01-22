@@ -20,11 +20,15 @@ app.post('/write/from/:from/to/:to', (req, res) => {
     }
   });
 
+  console.log('read');
+
   fs.writeFile('/mnt/empty/'+to, read, function(err) {
     if(err) {
       return console.log(err);
     }
   });
+
+  console.log('wrote');
 
   res.redirect('/');
 })
