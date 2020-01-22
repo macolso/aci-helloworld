@@ -20,7 +20,7 @@ app.post('/values', (req, res) => {
       return console.log(err);
     }
     // now I need to write to emptyDir
-    fs.writeFile("aci/logs/", data, function(err) {
+    fs.writeFile("/mnt/empty", data, function(err) {
     if(err) {
       return console.log(err);
     }
