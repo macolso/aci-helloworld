@@ -1,0 +1,37 @@
+apiVersion: '2018-10-01'
+location: eastus
+name: file-share-demo
+properties:
+  containers:
+  - name: hellofiles
+    properties:
+      environmentVariables: []
+      image: mcr.microsoft.com/azuredocs/aci-hellofiles
+      ports:
+      - port: 80
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      volumeMounts:
+      - mountPath: /aci/logs/
+        name: macolsofile
+      - mountPath: /mnt/empty
+        name: emptydir1
+  osType: Linux
+  restartPolicy: Always
+  ipAddress:
+    type: Public
+    ports:
+      - port: 80
+    dnsNameLabel: aci-demo
+  volumes:
+  - name: filesharevolume
+    azureFile:
+      sharename: acishare
+      storageAccountName: macolsostorage
+      storageAccountKey: gSaldpzX63596Dr4qWUH4qfSwossFsF78GbUsRkyXaEHYzrWCZQvIWfcwTzrERDtkv/abvNabmPsIhKDbx049A==
+  - name: emptydir1
+    emptyDir: {}
+tags: {}
+type: Microsoft.ContainerInstance/containerGroups
