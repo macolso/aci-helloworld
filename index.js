@@ -15,11 +15,15 @@ app.post('/values', (req, res) => {
 
   var filename = "/aci/logs/hamlet.txt";
 
-  fs.writeFile(filename, req.body.name, function(err) {
+  fs.readFile(filename, function(err) {
     if(err) {
       return console.log(err);
     }
-    
+    // now I need to write to emptyDir
+    fs.writeFile("aci/logs/", data, function(err) {
+    if(err) {
+      return console.log(err);
+    }
     console.log("Wrote to file");
   });
 
