@@ -6,7 +6,7 @@ properties:
   - name: hellofiles
     properties:
       environmentVariables: []
-      image: mcr.microsoft.com/azuredocs/aci-hellofiles
+      image: macolso/macolsotest:latest
       ports:
       - port: 80
       resources:
